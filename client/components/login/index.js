@@ -1,7 +1,7 @@
 import React from "React";
 import SocialBtn from "../button/social";
 import Icon from "react-native-vector-icons/FontAwesome";
-import {View, Button} from "react-native";
+import {View, Button, TouchableHighlight} from "react-native";
 
 class LoginContainer extends React.Component {
     constructor(props) { 
@@ -27,7 +27,9 @@ class LoginContainer extends React.Component {
     render() {
       return (
         <View>
-            <SocialBtn onPress={this.__handlePress}/>
+            <TouchableHighlight >
+                <SocialBtn onPress={this.__handlePress}/>
+            </TouchableHighlight >
         </View>
       );
     }
