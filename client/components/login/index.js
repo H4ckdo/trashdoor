@@ -27,9 +27,7 @@ class LoginContainer extends React.Component {
     render() {
       return (
         <View>
-            <TouchableHighlight >
-                <SocialBtn onPress={this.__handlePress}/>
-            </TouchableHighlight >
+            <SocialBtn onPress={this.__handlePress}/>
         </View>
       );
     }

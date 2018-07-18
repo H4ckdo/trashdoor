@@ -8,4 +8,4 @@ const App = createStackNavigator({
   home: {screen: Home},
 });
 
-export default App;
+export default App; 
