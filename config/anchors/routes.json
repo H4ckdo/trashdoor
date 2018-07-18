@@ -1,0 +1,62 @@
+{
+  "PointsController": {
+    "GET": [
+      {
+        "route": "/point/:id",
+        "handler": "findPoint"
+      },
+      {
+        "route": "/points",
+        "handler": "findPoints"
+      }
+    ],
+    "POST": [
+      {
+        "route": "/point/create",
+        "handler": "pointCreate"
+      }
+    ],
+    "PUT": [
+      {
+        "route": "/point/update/:id",
+        "handler": "pointUpdate"
+      }
+    ],
+    "DELETE": [
+      {
+        "route": "/point/delete/:id",
+        "handler": "pointDelete"
+      }
+    ]
+  },
+  "UsersController": {
+    "GET": [
+      {
+        "route": "/user/:id",
+        "handler": "findUser"
+      },
+      {
+        "route": "/users",
+        "handler": "findUsers"
+      }
+    ],
+    "POST": [
+      {
+        "route": "/user/create",
+        "handler": "userCreate"
+      }
+    ],
+    "PUT": [
+      {
+        "route": "/user/update/:id",
+        "handler": "userUpdate"
+      }
+    ],
+    "DELETE": [
+      {
+        "route": "/user/delete/:id",
+        "handler": "userDelete"
+      }
+    ]
+  }
+}

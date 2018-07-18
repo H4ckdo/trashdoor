@@ -5,7 +5,7 @@ import {createStackNavigator} from "react-navigation";
 
 const App = createStackNavigator({
   Login: {screen: Login},
-  home: {screen: Home},
+  home: {screen: Home}
 });
 
 export default App; 
