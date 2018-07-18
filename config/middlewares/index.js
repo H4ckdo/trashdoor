@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
 const uploadFiles = require('./uploadFiles.js');
-const graphql = require('./graphql/index.js');
+//const graphql = require('./graphql/index.js');
 const logger = require('morgan');
 const onDev = process.env.NODE_MODULE === "development";
 const compression = require('compression');
@@ -11,7 +11,7 @@ let middlewares = [
   () => bodyParser.json(),
   () => bodyParser.urlencoded({ extended: true }),
   uploadFiles,
-  graphql,
+  //graphql,
 ]
 
 /**

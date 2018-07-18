@@ -1,13 +1,13 @@
 /**
- * @class RootController
+ * @class UsersController
  * @param  {type} req {description}
  * @param  {type} res {description}
  * @return {type} {description}
  */
-class RootController {
+class UsersController {
 
 }
-AttachMethods(RootController);
+AttachMethods(UsersController);
 
-module.exports = RootController;
+module.exports = UsersController;
 

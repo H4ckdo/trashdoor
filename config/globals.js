@@ -4,7 +4,7 @@ const models = require('./anchors/models.json');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
-
+/*
 let {
   GraphQLNonNull,
   GraphQLObjectType,
@@ -16,17 +16,9 @@ let {
   GraphQLBoolean,
   GraphQLFloat
 } = require('graphql');
-
+*/
 const dependencies = {
-  GraphQLInputObjectType,
-  GraphQLObjectType,
-  GraphQLNonNull,
-  GraphQLBoolean,
-  GraphQLString,
   fieldContains,
-  GraphQLSchema,
-  GraphQLList,
-  GraphQLID,
   mongoose,
   routes,
   models,

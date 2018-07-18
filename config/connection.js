@@ -1,7 +1,7 @@
 const { URI, MODEL_START = "safe", CONNECTION = true } = process.env.NODE_ENV === "production" ? require('./env/production.js') : require('./env/development.js');
 mongoose.Promise = Promise;
 mongoose.set("debug", process.env.NODE_ENV === "development");
-const options = { };
+const options = {};
 
 /**
  * @function tryConnection

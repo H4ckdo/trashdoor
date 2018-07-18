@@ -5,10 +5,6 @@ const { validWord, enumeration } = require('../client/shared/validator.js');
 const { login, saveUser } = require('../helpers/usersMethods/index.js');
 
 const UsersSchema = new Schema({
-  photo: {
-    type: String,
-    default: ''
-  },
   rol: {
     type: String,
     validate: [{
@@ -22,22 +18,9 @@ const UsersSchema = new Schema({
     default: 'user',
     required: true
   },
-  userType: {
-    type: String,
-    required: true,
-    default: 'N',
-    validate: [{
-      ...enumeration,
-      validator: enumeration.validator.bind(this, [
-        'J',//Juridica
-        'N'//Natural
-      ])
-    }]
-  },
   userName: {
     type: String,
-    required: true,
-    unique: true
+    required: true    
   },
   isLogin: {
     type: Boolean,
@@ -45,7 +28,8 @@ const UsersSchema = new Schema({
   },
   email: {
     type: String,
-    required: false
+    required: false,
+    unique: true
   },
   password: {
     type: String,
