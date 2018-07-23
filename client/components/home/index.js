@@ -1,6 +1,7 @@
 import React from "react";
 import MyComponent from "../MyComponent";
-import {Text} from "react-navigation";
+import MapComponent from "../maps";
+import {Text, View, StyleSheet } from "react-native";
 
 class Home extends React.Component {
     constructor(props) {
@@ -13,9 +14,18 @@ class Home extends React.Component {
 
     render() {
         return (
-            <MyComponent />
+            <View id="homeContainer" style={styles.homeContainer}>
+                <MapComponent />
+            </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    homeContainer: {
+        flex:1
+    }
+});
+
 
 export default Home;
