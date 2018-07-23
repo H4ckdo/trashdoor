@@ -1,36 +1,44 @@
 import React from "React";
 import SocialBtn from "../button/social";
-import Icon from "react-native-vector-icons/FontAwesome";
-import {View, Button, TouchableHighlight} from "react-native";
+import {View, Button, TouchableHighlight, StyleSheet} from "react-native";
+import Permissions from 'react-native-permissions'
 
 class LoginContainer extends React.Component {
     constructor(props) { 
         super();
     }
 
-    // static navigationOptions = {
-    //     title: "Login",
-    // };
-
     __handlePress =() => {
         this.props.navigation.navigate('home');
     }
 
-    // SocialButton = () => {
-    //     return (
-    //         <Icon.Button name="facebook" backgroundColor="#3b5998" onPress={this.props.onPress}>
-    //             Login with Facebook
-    //         </Icon.Button>
-    //     );
-    // }
+    componentWillMount() {
+
+    }
+
+    componentDidMount() {
+        Permissions.check('location').then(response => {
+            // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
+            this.setState({ locationPermission: response }, ()=> {
+                console.log("Permission: ", this.state.locationPermission);
+            });
+        })
+    }
 
     render() {
       return (
-        <View>
+        <View style={styles.lgContainer}>
             <SocialBtn onPress={this.__handlePress}/>
         </View>
       );
     }
 }
+
+const styles = StyleSheet.create({
+    lgContainer: {
+        flex:1,
+        flexDirection: "column",
+    }
+});
 
 export default LoginContainer;
