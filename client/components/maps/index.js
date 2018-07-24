@@ -8,13 +8,13 @@ const SCREEN_WIDTH  = width;
 
 const ASPECT_RATIO = width/height;
 const DELTA_LATITUDE = 0.09;
-const DELTA_LONGITUDE = this.DELTA_LATITUDE * ASPECT_RATIO;
+const DELTA_LONGITUDE = DELTA_LATITUDE * ASPECT_RATIO;
 
 class MapComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialPosition: {
+            initialRegion: {
                 latitude: 0,
                 longitude: 0,
                 latitudeDelta: 0,
@@ -28,13 +28,19 @@ class MapComponent extends React.Component {
 
         this.watchId = null;
     }
+    
+    onUserLocationChange (e) {
+        console.log('Has change', e);
+    }
 
     componentDidMount() {
+
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 let latitude = parseFloat(position.coords.latitude);
                 let longitude = parseFloat(position.coords.longitude);
-                console.log('latitude: ')
+                debugger
+                console.log('latitude: ', latitude, " Longitude: ",longitude);
                 let initialRegion = {
                     latitude: latitude,
                     longitude: longitude,
@@ -43,7 +49,7 @@ class MapComponent extends React.Component {
                 };
 
                 this.setState({
-                    initialPosition: initialRegion,
+                    initialRegion: initialRegion,
                     marketPosition: initialRegion,
                 })
             }, 
@@ -52,13 +58,14 @@ class MapComponent extends React.Component {
                 alert(JSON.stringify(error));
             },
             
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            {}
         );
 
         this.watchId = navigator.geolocation.watchPosition( 
             (position) => {
                 let latitude = parseFloat(position.coords.latitude);
                 let longitude = parseFloat(position.coords.longitude);
+                console.log('latitude: ', latitude, " Longitude: ",longitude);
 
                 let lastRegion = {
                     latitude: latitude,
@@ -68,7 +75,7 @@ class MapComponent extends React.Component {
                 };
 
                 this.setState({
-                    initialPosition: lastRegion,
+                    initialRegion: lastRegion,
                     marketPosition: lastRegion,
                 });
             },
@@ -85,11 +92,13 @@ class MapComponent extends React.Component {
 
 
     render() {
+        let { initialPosition, initialRegion } = this.state;
+        console.log(initialRegion)
         return (
             <View id="mapContainer" style={styles.mapContainer}>
                 <MapView 
                     style={styles.map} 
-                    initialRegion = {this.state.initialPosition}
+                    region = {{...this.state.initialRegion}}
                 />
             </View>
         );
